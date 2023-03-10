@@ -72,8 +72,7 @@ function Settings({ navigation }) {
       <TouchableOpacity
         style={{ padding: 20, display: "flex", flexDirection: "row" }}
         onPress={() => {
-          console.log(`go to item ${item.id}`);
-          navigation.navigate("SettingsItem", { id: item.id });
+          navigation.navigate("Item", { id: item.id });
         }}
       >
         <Image

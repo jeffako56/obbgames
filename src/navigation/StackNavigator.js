@@ -132,7 +132,7 @@ const SettingsStackNavigator = ({ navigation }) => {
     >
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen
-        name="SettingsItem"
+        name="Item"
         component={SettingsItem}
         options={{
           headerStyle: {
