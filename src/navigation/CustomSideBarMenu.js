@@ -45,6 +45,7 @@ const CustomSidebarMenu = (props, { navigation }) => {
           onPress={() => props.navigation.navigate("Chat")}
           icon={({ size }) => (
             <Feather name="message-circle" size={size} color="#FF5149" />
+            
           )}
         />
         <DrawerItem

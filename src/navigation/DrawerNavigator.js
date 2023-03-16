@@ -8,6 +8,7 @@ import {
 } from "./StackNavigator";
 import TabNavigator from "./TabNavigator";
 import CustomSidebarMenu from "./CustomSideBarMenu";
+import ChannelScreen from "../features/chat/ChannelScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -29,6 +30,8 @@ const DrawerNavigator = () => {
         component={SettingsStackNavigator}
         options={{ headerShown: true }}
       />
+
+      <Drawer.Screen name="Channel" component={ChannelScreen} />
     </Drawer.Navigator>
   );
 };

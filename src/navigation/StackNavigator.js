@@ -4,17 +4,15 @@ import Home from "../features/tabs/Home";
 import Profile from "../features/profile/Profile";
 import Search from "../features/tabs/Search";
 import Friends from "../features/tabs/Friends";
-import Chat from "../features/chat/Chat";
+import ChatComponent from "../features/chat/ChatComponent";
 import Favorite from "../features/favorite/Favorite";
 import Wallet from "../features/wallet/Wallet";
 import Settings from "../features/settings/Settings";
 import SettingsItem from "../features/settings/SettingsItem";
 import { Image, TouchableOpacity } from "react-native";
-import {
-  DrawerActions,
-  StackActions,
-} from "@react-navigation/native";
+import { DrawerActions, StackActions } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+import ChannelScreen from "../features/chat/ChannelScreen";
 
 const Stack = createStackNavigator();
 
@@ -45,7 +43,16 @@ const MainStackNavigator = ({ navigation }) => {
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Favorite" component={Favorite} />
       <Stack.Screen name="Wallet" component={Wallet} />
-      <Stack.Screen name="Chat" component={Chat} />
+      <Stack.Screen name="Chat" component={ChatComponent} />
+      {/* <Stack.Screen
+        name="Channel"
+        component={ChannelScreen}
+        // options={() => ({
+        //   headerBackTitle: "Back",
+        //   headerRight: () => <></>,
+        //   // headerTitle: channel?.data?.name,
+        // })}
+      /> */}
     </Stack.Navigator>
   );
 };
