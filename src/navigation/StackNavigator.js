@@ -4,7 +4,7 @@ import Home from "../features/tabs/Home";
 import Profile from "../features/profile/Profile";
 import Search from "../features/tabs/Search";
 import Friends from "../features/tabs/Friends";
-import ChatComponent from "../features/chat/ChatComponent";
+import ChatComponent from "../features/chat/ChannelListScreen";
 import Favorite from "../features/favorite/Favorite";
 import Wallet from "../features/wallet/Wallet";
 import Settings from "../features/settings/Settings";
@@ -12,12 +12,15 @@ import SettingsItem from "../features/settings/SettingsItem";
 import { Image, TouchableOpacity } from "react-native";
 import { DrawerActions, StackActions } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+// import ChannelScreen from "../features/chat/ChannelScreen";z
+import ChannelListScreen from "../features/chat/ChannelListScreen";
 import ChannelScreen from "../features/chat/ChannelScreen";
 
 const Stack = createStackNavigator();
 
 const MainStackNavigator = ({ navigation }) => {
   const openDrawer = () => navigation.dispatch(DrawerActions.openDrawer());
+  const goBack = () => navigation.dispatch(StackActions.pop());
   return (
     <Stack.Navigator
       screenOptions={{
@@ -43,10 +46,25 @@ const MainStackNavigator = ({ navigation }) => {
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Favorite" component={Favorite} />
       <Stack.Screen name="Wallet" component={Wallet} />
-      <Stack.Screen name="Chat" component={ChatComponent} />
-      {/* <Stack.Screen
+      {/* <Stack.Screen name="Chat" component={ChannelListScreen} />
+      <Stack.Screen
         name="Channel"
         component={ChannelScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: "#fafdff",
+          },
+          headerTitleAlign: "center",
+          headerLayoutPreset: "center",
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={goBack}
+              style={{ marginLeft: 15, padding: 10 }}
+            >
+              <Ionicons name="arrow-back" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+        }}
         // options={() => ({
         //   headerBackTitle: "Back",
         //   headerRight: () => <></>,
@@ -161,9 +179,64 @@ const SettingsStackNavigator = ({ navigation }) => {
   );
 };
 
+const ChatStackNavigator = ({ navigation }) => {
+  const openDrawer = () => navigation.dispatch(DrawerActions.openDrawer());
+  const goBack = () => navigation.dispatch(StackActions.pop());
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#fafdff",
+        },
+        headerTitleAlign: "center",
+        headerLayoutPreset: "center",
+        headerLeft: () => (
+          <TouchableOpacity
+            onPress={openDrawer}
+            style={{ marginLeft: 15, padding: 10 }}
+          >
+            <Image
+              source={require("../../assets/menu.png")}
+              style={{ height: 20, width: 20 }}
+            />
+          </TouchableOpacity>
+        ),
+      }}
+    >
+           <Stack.Screen name="Chat" component={ChannelListScreen} />
+      <Stack.Screen
+        name="Channel"
+        component={ChannelScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: "#fafdff",
+          },
+          title: "Chat",
+          headerTitleAlign: "center",
+          headerLayoutPreset: "center",
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={goBack}
+              style={{ marginLeft: 15, padding: 10 }}
+            >
+              <Ionicons name="arrow-back" size={24} color="black" />
+            </TouchableOpacity>
+          ),
+        }}
+        // options={() => ({
+        //   headerBackTitle: "Back",
+        //   headerRight: () => <></>,
+        //   // headerTitle: channel?.data?.name,
+        // })}
+      />
+    </Stack.Navigator>
+  );
+};
+
 export {
   MainStackNavigator,
   SearchStackNavigator,
   FriendsStackNavigator,
   SettingsStackNavigator,
+  ChatStackNavigator,
 };

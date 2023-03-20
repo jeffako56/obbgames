@@ -2,13 +2,13 @@ import React from "react";
 
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import {
+  ChatStackNavigator,
   FriendsStackNavigator,
   SearchStackNavigator,
   SettingsStackNavigator,
 } from "./StackNavigator";
 import TabNavigator from "./TabNavigator";
 import CustomSidebarMenu from "./CustomSideBarMenu";
-import ChannelScreen from "../features/chat/ChannelScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -31,7 +31,11 @@ const DrawerNavigator = () => {
         options={{ headerShown: true }}
       />
 
-      <Drawer.Screen name="Channel" component={ChannelScreen} />
+      <Drawer.Screen
+        name="Chat"
+        component={ChatStackNavigator}
+        // options={{ headerShown: true }}
+      />
     </Drawer.Navigator>
   );
 };
